@@ -106,6 +106,7 @@ class ResolvedAtomCompleter(
         if (ErrorUtils.isError(resolvedCall.candidateDescriptor)) {
             kotlinToResolvedCallTransformer.runArgumentsChecks(topLevelCallContext, topLevelTrace, lastCall as NewResolvedCallImpl<*>)
             checkMissingReceiverSupertypes(resolvedCall, missingSupertypesResolver, topLevelTrace)
+            kotlinToResolvedCallTransformer.bind(topLevelTrace, resolvedCall)
             return resolvedCall
         }
 
